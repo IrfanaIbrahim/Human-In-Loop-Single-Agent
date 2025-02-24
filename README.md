@@ -16,8 +16,8 @@ Parse user input
 Propose tool actions  
 Allow you to:  
 ✅ Execute  
-✏️ Edit  
-💬 Provide feedback  
+✏️ Edit  - Direct JSON edit  
+💬 Provide feedback - Can provide feedback in our natural language  
 ❌ Cancel  
 
 Need to set your Open API Key & Install required dependencies.  
