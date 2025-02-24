@@ -21,4 +21,11 @@ Allow you to:
 ❌ Cancel  
 
 Need to set your Open API Key & Install required dependencies.  
+This may be the requirements -  
+langchain>=0.1.0  
+langchain-openai>=0.0.7  
+langchain-community>=0.0.1  
+openai>=1.0.0  
+python-dotenv>=1.0.0  
+tavily-search>=0.1.3  
 Feel free to fork and contribute! ✨
