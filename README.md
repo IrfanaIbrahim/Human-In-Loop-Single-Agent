@@ -15,10 +15,66 @@ I need to book a ticket on 12th March 2025 for 2 passengers from Mumbai to Dubai
 Parse user input  
 Propose tool actions  
 Allow you to:  
-✅ Execute  
-✏️ Edit  - Direct JSON edit  
-💬 Provide feedback - Can provide feedback in our natural language  
-❌ Cancel  
+✅ Execute  - Proceed with execution  
+✏️ Edit  - Update the tool call before execution  
+💬 Provide feedback -  Ask LLM to refine the tool call    
+❌ Cancel  - Can cancel the execution  
+
+*The Flow can be as*  
+#1.APPROVE
+Query : “I need to book a ticket on 12th March 2025 for 2 passengers from mumbai to dubai in economy class”
+Proposed action: tool='book_ticket' tool_input={'query': 'Book a ticket from Mumbai to Dubai on 12th March 2025 for 2 passengers', 'date': '2025-03-12', 'from_location': 'Mumbai', 'to_location': 'Dubai', 'passengers': 2, 'class_type': 'economy'}
+Choose an option:
+1. Execute action [y]
+2. Edit action [e]
+3. Provide feedback [f]
+4. Cancel [n]
+Your choice: y
+Output : “I have successfully booked 2 economy class tickets from Mumbai to Dubai for 12th March 2025. The total price for the tickets is $600. Your booking reference is BOK-9223014.”
+
+MODIFY - Direct Human Edits IN JSON
+
+Query : “I need to book a ticket on 12th March 2025 for 2 passengers from mumbai to dubai in economy class”
+Proposed action: tool='book_ticket' tool_input={'query': 'Book a ticket from Mumbai to Dubai on 12th March 2025 for 2 passengers', 'date': '2025-03-12', 'from_location': 'Mumbai', 'to_location': 'Dubai', 'passengers': 2, 'class_type': 'economy'}
+Choose an option:
+1. Execute action [y]
+2. Edit action [e]
+3. Provide feedback [f]
+4. Cancel [n]
+Your choice: e
+Current tool input: {'query': 'Book a ticket from Mumbai to Dubai on 12th March 2025 for 2 passengers', 'date': '2025-03-12', 'from_location': 'Mumbai', 'to_location': 'Dubai', 'passengers': 2, 'class_type': 'economy'}
+Enter new tool input (as JSON string): {"query": "Book a flight","date": "2024-03-20","from_location": "new york","to_location": "london","passengers": 2,"class_type": "business"}
+
+Output:”I have successfully booked the flight tickets for 2 passengers from Mumbai to Dubai on 12th March 2025 in the economy class. The total price for the tickets is $4000.”
+
+
+
+Provide Feedback 💬 — LLM Fixes It
+
+Query : “I need to book a ticket on 12th March 2025 for 2 passengers from mumbai to dubai in economy class”
+Proposed action: tool='book_ticket' tool_input={'query': 'Book a ticket from Mumbai to Dubai on 12th March 2025 for 2 passengers', 'date': '2025-03-12', 'from_location': 'Mumbai', 'to_location': 'Dubai', 'passengers': 2, 'class_type': 'economy'}
+Proposed action: tool='book_ticket' tool_input={'query': 'Book a ticket from Mumbai to Dubai', 'date': '2025-03-12', 'from_location': 'Mumbai', 'to_location': 'Dubai', 'passengers': 2, 'class_type': 'economy'}
+
+Choose an option:
+1. Execute action [y]
+2. Edit action [e]
+3. Provide feedback [f]
+4. Cancel [n]
+Your choice: f
+
+Provide your feedback about the tool call: I need only single ticket
+
+Proposed action: tool='book_ticket' tool_input={'query': 'Book a ticket from Mumbai to Dubai', 'date': '2025-03-12', 'from_location': 'Mumbai', 'to_location': 'Dubai', 'passengers': 1, 'class_type': 'economy'}
+
+Choose an option:
+1. Execute action [y]
+2. Edit action [e]
+3. Provide feedback [f]
+4. Cancel [n]
+Your choice: y
+
+Output :”The ticket from Mumbai to Dubai for 1 passenger on 12th March 2025 in economy class has been successfully booked. The total price is $300. Booking reference: BOK-7904400.”
+
 
 Need to set your Open API Key & Install required dependencies.  
 This may be the requirements -  
