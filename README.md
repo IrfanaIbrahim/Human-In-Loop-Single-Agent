@@ -40,10 +40,10 @@ Choose an option:
 1. Execute action [y]
 2. Edit action [e]
 3. Provide feedback [f]
-4. Cancel [n]
-**Your choice: e**
+4. Cancel [n]  
+**Your choice: e**  
 Current tool input: {'date': '2025-03-12', 'from_location': 'Mumbai', 'to_location': 'Dubai', 'passengers': 2, 'class_type': 'economy'}  
-**Enter new tool input (as JSON string): {"date": "2024-03-20","from_location": "new york","to_location": "london","passengers": 2,"class_type": "business"}**
+**Enter new tool input (as JSON string) 👤: {"date": "2024-03-20","from_location": "new york","to_location": "london","passengers": 2,"class_type": "business"}**
 
 **Output 🤖:”I have successfully booked the flight tickets for 2 passengers from Mumbai to Dubai on 12th March 2025 in the economy class. The total price for the tickets is $4000.”**
 
@@ -58,7 +58,7 @@ Choose an option:
 1. Execute action [y]
 2. Edit action [e]
 3. Provide feedback [f]
-4. Cancel [n]
+4. Cancel [n]  
 **Your choice: f**
 
 **Provide your feedback about the tool call 👤: I need only single ticket**
@@ -69,7 +69,7 @@ Choose an option:
 1. Execute action [y]
 2. Edit action [e]
 3. Provide feedback [f]
-4. Cancel [n]
+4. Cancel [n]  
 **Your choice: y**  
 
 **Output 🤖:”The ticket from Mumbai to Dubai for 1 passenger on 12th March 2025 in economy class has been successfully booked. The total price is $300. Booking reference: BOK-7904400.”**
