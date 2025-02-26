@@ -156,13 +156,19 @@ def call_tool(state):
                 )
                 print(f"Updated action: {action}")
                 # Update the original message to reflect the edited query
-                new_query = new_tool_input.get('query', '')
-                print(f"new_query: {new_query}")
-                messages[0] = HumanMessage(content=new_query)
+                query = f"Book a ticket from {new_tool_input.get('from_location', '')} to {new_tool_input.get('to_location', '')} on {new_tool_input.get('date', '')}"
+                if 'passengers' in new_tool_input:
+                    query += f" for {new_tool_input['passengers']} passengers"
+                if 'class_type' in new_tool_input:
+                    query += f" in {new_tool_input['class_type']} class"
+                print(query)
+                # Update messages with constructed query
+                state["messages"] = [HumanMessage(content=query)]
+                
                 # Execute the edited action
                 response = tool_executor.invoke(action)
                 function_message = FunctionMessage(content=str(response), name=action.tool)
-                return {"messages": [function_message]}
+                return {"messages": [HumanMessage(content = query),function_message]}
             except json.JSONDecodeError:
                 print("Invalid JSON format. Please try again.")
                 continue
